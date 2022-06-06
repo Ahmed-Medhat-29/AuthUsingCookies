@@ -1,0 +1,11 @@
+﻿.input-validation-error:focus {
+	box-shadow: 0 0 0 0.2rem rgb(220 53 69 / 25%);
+}
+
+.input-validation-error {
+	border-color: #dc3545 !important;
+}
+
+.validation-summary-errors ul {
+	margin-bottom: 0px;
+}

@@ -1,0 +1,43 @@
+﻿@model AuthUsingCookies.Models.User
+@{
+	ViewData["Title"] = "My Account";
+}
+
+<div class="mt-5 container">
+	<div class="row">
+		<div class="col-4">
+			@if(Model.ImageName == null)
+			{
+				<img src="~/img/DefaultUserImage.jpg" class="w-100" />
+			}
+			else
+			{
+				<img src="~/img/user/@Model.ImageName" class="w-100" asp-append-version="true" />
+			}
+		</div>
+		<div class="col-6 pt-4 pl-5">
+			<form method="post" asp-controller="Account" asp-action="Update" enctype="multipart/form-data">
+				<div asp-validation-summary="ModelOnly" class="alert alert-danger"></div>
+				<div class="form-group">
+					<label asp-for="Username" class="d-block font-weight-bold"></label>
+					<input asp-for="Username" value="@Model.Username" class="form-control" />
+					<span asp-validation-for="Username" class="text-danger"></span>
+				</div>
+				<div class="form-group">
+					<label asp-for="Email" class="d-block font-weight-bold"></label>
+					<input for="Email" value="@Model.Email" disabled class="form-control" />
+				</div>
+				<div class="form-group">
+					<label for="image" class="d-block font-weight-bold">Image</label>
+					<input type="file" name="image" class="form-control-file" />
+				</div>
+				<br />
+				<button class="btn btn-success form-control">Update</button>
+			</form>
+		</div>
+	</div>
+</div>
+
+@section Scripts {
+	<partial name="_ValidationScriptsPartial" />
+}
